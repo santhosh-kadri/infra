@@ -20,7 +20,7 @@ resource "aws_ecr_repository" "stock-finch-ecr" {
   image_tag_mutability = "IMMUTABLE"
 }
 
-resource "aws_ecr_repository_policy" "sf-repo-policy"{
+resource "aws_ecr_repository_policy" "sf-repo-policy" {
     repository = aws_ecr_repository.stock-finch-ecr.name
     policy = {
         "Version": "2008-10-17",
@@ -29,9 +29,16 @@ resource "aws_ecr_repository_policy" "sf-repo-policy"{
                 "Sid": "ECR Repository Policy",
                 "Effect": "Allow",
                 "Principal": "*",
-                "Action": ["*"]
-            }
-
-        ]
-    }
+                "Action": [
+                    "ecr:BatchCheckLayerAvailability",
+                    "ecr:BatchGetImage",
+                    "ecr:CompleteLayerUpload",
+                    "ecr:GetDownloadUrlForLayer",
+                    "ecr:GetLifecyclePolicy",
+                    "ecr:InitiateLayerUpload",
+                    "ecr:PutImage",
+                    "ecr:UploadLayerPart"
+                ]
+            }]
+        }
 }
