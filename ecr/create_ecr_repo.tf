@@ -29,7 +29,7 @@ resource "aws_ecr_repository_policy" "sf-repo-policy"{
                 "Sid": "ECR Repository Policy",
                 "Effect": "Allow",
                 "Principal": "*",
-                "Action": "*"
+                "Action": ["*"]
             }
 
         ]
