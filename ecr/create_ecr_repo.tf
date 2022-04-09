@@ -31,6 +31,7 @@ resource "aws_ecr_repository_policy" "sf-repo-policy" {
                 "Effect": "Allow",
                 "Principal": "*",
                 "Action": [
+                    "ecr:DescribeImages",
                     "ecr:GetDownloadUrlForLayer",
                     "ecr:BatchGetImage",
                     "ecr:BatchCheckLayerAvailability",
