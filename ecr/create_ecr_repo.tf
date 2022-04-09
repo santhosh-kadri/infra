@@ -22,7 +22,8 @@ resource "aws_ecr_repository" "stock-finch-ecr" {
 
 resource "aws_ecr_repository_policy" "sf-repo-policy" {
     repository = aws_ecr_repository.stock-finch-ecr.name
-    policy = {
+    policy = <<EOF
+    {
         "Version": "2008-10-17",
         "Statement": [
             {
@@ -33,4 +34,5 @@ resource "aws_ecr_repository_policy" "sf-repo-policy" {
                         "ecr:DescribeRepositories"]
             }]
         }
+    EOF
 }
