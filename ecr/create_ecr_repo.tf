@@ -29,16 +29,8 @@ resource "aws_ecr_repository_policy" "sf-repo-policy" {
                 "Sid": "ECR Repository Policy",
                 "Effect": "Allow",
                 "Principal": "*",
-                "Action": [
-                    "ecr:BatchCheckLayerAvailability",
-                    "ecr:BatchGetImage",
-                    "ecr:CompleteLayerUpload",
-                    "ecr:GetDownloadUrlForLayer",
-                    "ecr:GetLifecyclePolicy",
-                    "ecr:InitiateLayerUpload",
-                    "ecr:PutImage",
-                    "ecr:UploadLayerPart"
-                ]
+                "Action": ["ecr:DescribeImages",
+                        "ecr:DescribeRepositories"]
             }]
         }
 }
